@@ -1,6 +1,5 @@
 package com.demod.factorio.apps;
 
-import java.awt.Color;
 import java.awt.Desktop;
 import java.io.File;
 import java.io.FileInputStream;
@@ -8,7 +7,6 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.util.Collection;
-import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -155,14 +153,14 @@ public class FactorioWikiMain {
 
 		Map<String, WikiTypeMatch> wikiTypes = generateWikiTypes(table);
 
-		write(wiki_Technologies(table), "wiki-technologies");
-		write(wiki_FormulaTechnologies(table), "wiki-formula-technologies");
-		write(wiki_Recipes(table), "wiki-recipes");
-		write(wiki_Types(table, wikiTypes), "wiki-types");
-		write(wiki_Items(table), "wiki-items");
+		// write(wiki_Technologies(table), "wiki-technologies");
+		// write(wiki_FormulaTechnologies(table), "wiki-formula-technologies");
+		// write(wiki_Recipes(table), "wiki-recipes");
+		// write(wiki_Types(table, wikiTypes), "wiki-types");
+		// write(wiki_Items(table), "wiki-items");
 		// write(wiki_TypeTree(table), "wiki-type-tree");
-		write(wiki_Entities(table, wikiTypes), "wiki-entities");
-		write(wiki_DataRawTree(table), "data-raw-tree");
+		write(wiki_Entities(table, wikiTypes), "resistances");
+		// write(wiki_DataRawTree(table), "data-raw-tree");
 
 		// wiki_GenerateTintedIcons(table, new File(outputFolder, "icons"));
 
@@ -180,6 +178,7 @@ public class FactorioWikiMain {
 		return Collectors.collectingAndThen(Collectors.toList(), JSONArray::new);
 	}
 
+	@SuppressWarnings("unused")
 	private static JSONObject wiki_DataRawTree(DataTable table) {
 		JSONObject json = createOrderedJSONObject();
 
@@ -203,127 +202,29 @@ public class FactorioWikiMain {
 	private static JSONObject wiki_Entities(DataTable table, Map<String, WikiTypeMatch> wikiTypes) {
 		JSONObject json = createOrderedJSONObject();
 
-		Optional<LuaValue> optUtilityConstantsLua = table.getRaw("utility-constants", "default");
-		LuaValue utilityConstantsLua = optUtilityConstantsLua.get();
+		table.getEntities().values().stream().sorted((e1, e2) -> e1.getName().compareTo(e2.getName())).forEach(e -> {
 
-		Color defaultFriendlyColor = Utils.parseColor(utilityConstantsLua.get("chart").get("default_friendly_color"));
-		Map<String, Color> defaultFriendlyColorByType = new HashMap<>();
-		Utils.forEach(utilityConstantsLua.get("chart").get("default_friendly_color_by_type"), (k, v) -> {
-			defaultFriendlyColorByType.put(k.tojstring(), Utils.parseColor(v));
+			LuaValue resistances = e.lua().get("resistances");
+
+			if (!resistances.isnil()) {
+				JSONObject itemJson = createOrderedJSONObject();
+				json.put(table.getWikiEntityName(e.getName()), itemJson);
+				JSONObject resistancesJson = createOrderedJSONObject();
+				itemJson.put("resistances", resistancesJson);
+
+				for (int i = 1; i <= resistances.length(); ++i) {
+					LuaValue resist = resistances.get(i);
+
+					JSONObject resistJson = createOrderedJSONObject();
+					resistancesJson.put(resist.get("type").toString(), resistJson);
+					LuaValue percent = resist.get("percent");
+					LuaValue decrease = resist.get("decrease");
+					resistJson.put("percent", !percent.isnil() ? percent.toint() : 0);
+					resistJson.put("decrease", !decrease.isnil() ? decrease.toint() : 0);
+				}
+			}
+
 		});
-
-		table.getEntities().values().stream().sorted((e1, e2) -> e1.getName().compareTo(e2.getName()))
-				.filter(e -> !wikiTypes.get(e.getName()).toString().equals("N/A")).forEach(e -> {
-					Color mapColor = null;
-					LuaValue friendlyMapColorLua = e.lua().get("friendly_map_color");
-					if (!friendlyMapColorLua.isnil()) {
-						mapColor = Utils.parseColor(friendlyMapColorLua);
-					} else {
-						LuaValue mapColorLua = e.lua().get("map_color");
-						if (!mapColorLua.isnil()) {
-							mapColor = Utils.parseColor(mapColorLua);
-						} else {
-							mapColor = defaultFriendlyColorByType.get(e.lua().get("type").tojstring());
-							if (mapColor == null && !e.getFlags().contains("not-on-map")) {
-								mapColor = defaultFriendlyColor;
-							}
-						}
-					}
-
-					if (e.getType().equals("car") || e.getType().equals("locomotive")
-							|| e.getType().contains("wagon")) {
-						mapColor = null; // these entity types are not drawn on map normally
-					}
-
-					double health = e.lua().get("max_health").todouble();
-					LuaValue minableLua = e.lua().get("minable");
-					LuaValue resistances = e.lua().get("resistances");
-					LuaValue energySource = e.lua().get("energy_source");
-					if (energySource.isnil() && !e.lua().get("burner").isnil())
-						energySource = e.lua().get("burner");
-					double emissions = 0.0;
-
-					if (!energySource.isnil()) {
-						LuaValue prototypeEmissions = energySource.get("emissions_per_second_per_watt");
-						LuaValue energyUsageLua = e.lua().get("energy_usage");
-						if (energyUsageLua.isnil() && !e.lua().get("energy_consumption").isnil())
-							energyUsageLua = e.lua().get("energy_consumption");
-						else if (energyUsageLua.isnil() && !e.lua().get("consumption").isnil())
-							energyUsageLua = e.lua().get("consumption");
-
-						if (!energyUsageLua.isnil()) {
-							double multiplier = 1;
-							char magnitudeChar = energyUsageLua.toString().charAt(energyUsageLua.length() - 2);
-							switch (magnitudeChar)
-							  {
-							    case 'k':
-							    case 'K': multiplier = 1.0e+3; break;
-							    case 'M': multiplier = 1.0e+6; break;
-							    case 'G': multiplier = 1.0e+9; break;
-							    case 'T': multiplier = 1.0e+12; break;
-							    case 'P': multiplier = 1.0e+15; break;
-							    case 'E': multiplier = 1.0e+18; break;
-							    case 'Z': multiplier = 1.0e+21; break;
-							    case 'Y': multiplier = 1.0e+24; break;
-							    default:
-							    	System.err.println("Unknown magnitude char in energy usage of " + e.getName() +  ": " + magnitudeChar);
-							  }
-							
-							double energyUsage = Double.parseDouble(energyUsageLua.toString().substring(0, energyUsageLua.length() - 2));
-							energyUsage *= multiplier;
-							if (!prototypeEmissions.isnil())
-								emissions = prototypeEmissions.todouble() * energyUsage;
-						}
-
-					}
-
-					if (mapColor != null || health > 0 || !minableLua.isnil() || emissions > 0 || !resistances.isnil()) {
-						JSONObject itemJson = createOrderedJSONObject();
-						json.put(table.getWikiEntityName(e.getName()), itemJson);
-
-						if (mapColor != null)
-							itemJson.put("map-color", String.format("%02x%02x%02x", mapColor.getRed(),
-									mapColor.getGreen(), mapColor.getBlue()));
-						if (health > 0)
-							itemJson.put("health", health);
-						if (!minableLua.isnil())
-							itemJson.put("mining-time", minableLua.get("mining_time").todouble());
-						if (emissions > 0)
-							itemJson.put("pollution", Math.round(emissions * 100) / 100.0);
-						if (!resistances.isnil()) {
-							JSONObject resistancesJson = createOrderedJSONObject();
-							itemJson.put("resistances", resistancesJson);
-
-							for (int i = 1; i <= resistances.length(); ++i) {
-								LuaValue resist = resistances.get(i);
-
-								JSONObject resistJson = createOrderedJSONObject();
-								resistancesJson.put(resist.get("type").toString(), resistJson);
-								LuaValue percent = resist.get("percent");
-								LuaValue decrease = resist.get("decrease");
-								resistJson.put("percent", !percent.isnil() ? percent.toint() : 0);
-								resistJson.put("decrease", !decrease.isnil() ? decrease.toint() : 0);
-							}
-						}
-					}
-				});
-
-		// not entities but lets just.. ignore that
-		table.getTiles().values().stream().sorted((t1, t2) -> t1.getName().compareTo(t2.getName()))
-				.filter(t -> table.hasWikiEntityName(t.getName())).forEach(t -> {
-					Color mapColor = null;
-					LuaValue mapColorLua = t.lua().get("map_color");
-					if (!mapColorLua.isnil())
-						mapColor = Utils.parseColor(mapColorLua);
-
-					if (mapColor != null) {
-						JSONObject itemJson = createOrderedJSONObject();
-						json.put(table.getWikiEntityName(t.getName()), itemJson);
-
-						itemJson.put("map-color", String.format("%02x%02x%02x", mapColor.getRed(), mapColor.getGreen(),
-								mapColor.getBlue()));
-					}
-				});
 
 		return json;
 	}
@@ -350,6 +251,7 @@ public class FactorioWikiMain {
 		return wikiName;
 	}
 
+	@SuppressWarnings("unused")
 	private static JSONObject wiki_FormulaTechnologies(DataTable table) {
 		JSONObject json = createOrderedJSONObject();
 		table.getTechnologies().values().stream().filter(t -> t.isBonus()).map(t -> t.getBonusName()).distinct()
@@ -456,6 +358,7 @@ public class FactorioWikiMain {
 		});
 	}
 
+	@SuppressWarnings("unused")
 	private static JSONObject wiki_Items(DataTable table) {
 		JSONObject json = createOrderedJSONObject();
 
@@ -506,6 +409,7 @@ public class FactorioWikiMain {
 	 * @param table
 	 * @param mappingJson
 	 */
+	@SuppressWarnings("unused")
 	private static JSONObject wiki_Recipes(DataTable table) throws FileNotFoundException {
 		JSONObject json = createOrderedJSONObject();
 
@@ -608,6 +512,7 @@ public class FactorioWikiMain {
 	 * <br>
 	 * - Bilka
 	 */
+	@SuppressWarnings("unused")
 	private static JSONObject wiki_Technologies(DataTable table) {
 		JSONObject json = createOrderedJSONObject();
 
@@ -671,6 +576,7 @@ public class FactorioWikiMain {
 		return json;
 	}
 
+	@SuppressWarnings("unused")
 	private static JSONObject wiki_Types(DataTable table, Map<String, WikiTypeMatch> wikiTypes) {
 		JSONObject json = createOrderedJSONObject();
 

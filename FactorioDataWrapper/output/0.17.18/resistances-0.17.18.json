@@ -1,0 +1,1090 @@
+{
+  "Artillery turret": {
+    "resistances": {
+      "fire": {
+        "percent": 50,
+        "decrease": 15
+      },
+      "physical": {
+        "percent": 30,
+        "decrease": 15
+      },
+      "impact": {
+        "percent": 50,
+        "decrease": 50
+      },
+      "explosion": {
+        "percent": 30,
+        "decrease": 15
+      },
+      "acid": {
+        "percent": 20,
+        "decrease": 3
+      }
+    }
+  },
+  "Artillery wagon": {
+    "resistances": {
+      "fire": {
+        "percent": 50,
+        "decrease": 15
+      },
+      "physical": {
+        "percent": 30,
+        "decrease": 15
+      },
+      "impact": {
+        "percent": 50,
+        "decrease": 50
+      },
+      "explosion": {
+        "percent": 30,
+        "decrease": 15
+      },
+      "acid": {
+        "percent": 20,
+        "decrease": 3
+      }
+    }
+  },
+  "Assembling machine 1": {
+    "resistances": {
+      "fire": {
+        "percent": 70,
+        "decrease": 0
+      }
+    }
+  },
+  "Assembling machine 2": {
+    "resistances": {
+      "fire": {
+        "percent": 70,
+        "decrease": 0
+      }
+    }
+  },
+  "Assembling machine 3": {
+    "resistances": {
+      "fire": {
+        "percent": 70,
+        "decrease": 0
+      }
+    }
+  },
+  "Behemoth biter": {
+    "resistances": {
+      "physical": {
+        "percent": 10,
+        "decrease": 12
+      },
+      "explosion": {
+        "percent": 10,
+        "decrease": 12
+      },
+      "acid": {
+        "percent": 100,
+        "decrease": 0
+      }
+    }
+  },
+  "Behemoth spitter": {
+    "resistances": {
+      "explosion": {
+        "percent": 30,
+        "decrease": 0
+      },
+      "acid": {
+        "percent": 100,
+        "decrease": 0
+      }
+    }
+  },
+  "Behemoth worm turret": {
+    "resistances": {
+      "physical": {
+        "percent": 0,
+        "decrease": 10
+      },
+      "explosion": {
+        "percent": 30,
+        "decrease": 10
+      },
+      "fire": {
+        "percent": 70,
+        "decrease": 3
+      },
+      "acid": {
+        "percent": 100,
+        "decrease": 0
+      }
+    }
+  },
+  "Big biter": {
+    "resistances": {
+      "physical": {
+        "percent": 10,
+        "decrease": 8
+      },
+      "explosion": {
+        "percent": 10,
+        "decrease": 0
+      },
+      "acid": {
+        "percent": 100,
+        "decrease": 0
+      }
+    }
+  },
+  "Big electric pole": {
+    "resistances": {
+      "fire": {
+        "percent": 100,
+        "decrease": 0
+      }
+    }
+  },
+  "Big spitter": {
+    "resistances": {
+      "explosion": {
+        "percent": 15,
+        "decrease": 0
+      },
+      "acid": {
+        "percent": 100,
+        "decrease": 0
+      }
+    }
+  },
+  "Big worm turret": {
+    "resistances": {
+      "physical": {
+        "percent": 0,
+        "decrease": 10
+      },
+      "explosion": {
+        "percent": 30,
+        "decrease": 10
+      },
+      "fire": {
+        "percent": 70,
+        "decrease": 3
+      },
+      "acid": {
+        "percent": 100,
+        "decrease": 0
+      }
+    }
+  },
+  "Biter spawner": {
+    "resistances": {
+      "physical": {
+        "percent": 15,
+        "decrease": 2
+      },
+      "explosion": {
+        "percent": 15,
+        "decrease": 5
+      },
+      "fire": {
+        "percent": 60,
+        "decrease": 3
+      }
+    }
+  },
+  "Blue chest": {
+    "resistances": {
+      "fire": {
+        "percent": 90,
+        "decrease": 0
+      },
+      "impact": {
+        "percent": 60,
+        "decrease": 0
+      }
+    }
+  },
+  "Boiler": {
+    "resistances": {
+      "fire": {
+        "percent": 90,
+        "decrease": 0
+      },
+      "explosion": {
+        "percent": 30,
+        "decrease": 0
+      },
+      "impact": {
+        "percent": 30,
+        "decrease": 0
+      }
+    }
+  },
+  "Burner inserter": {
+    "resistances": {
+      "fire": {
+        "percent": 90,
+        "decrease": 0
+      }
+    }
+  },
+  "Car": {
+    "resistances": {
+      "fire": {
+        "percent": 50,
+        "decrease": 0
+      },
+      "impact": {
+        "percent": 30,
+        "decrease": 50
+      },
+      "acid": {
+        "percent": 20,
+        "decrease": 0
+      }
+    }
+  },
+  "Cargo wagon": {
+    "resistances": {
+      "fire": {
+        "percent": 50,
+        "decrease": 15
+      },
+      "physical": {
+        "percent": 30,
+        "decrease": 15
+      },
+      "impact": {
+        "percent": 60,
+        "decrease": 50
+      },
+      "explosion": {
+        "percent": 30,
+        "decrease": 15
+      },
+      "acid": {
+        "percent": 20,
+        "decrease": 3
+      }
+    }
+  },
+  "Centrifuge": {
+    "resistances": {
+      "fire": {
+        "percent": 70,
+        "decrease": 0
+      }
+    }
+  },
+  "Construction robot": {
+    "resistances": {
+      "fire": {
+        "percent": 85,
+        "decrease": 0
+      }
+    }
+  },
+  "Curved rail": {
+    "resistances": {
+      "fire": {
+        "percent": 100,
+        "decrease": 0
+      },
+      "acid": {
+        "percent": 80,
+        "decrease": 0
+      }
+    }
+  },
+  "Defender": {
+    "resistances": {
+      "acid": {
+        "percent": 80,
+        "decrease": 0
+      }
+    }
+  },
+  "Destroyer": {
+    "resistances": {
+      "acid": {
+        "percent": 90,
+        "decrease": 0
+      }
+    }
+  },
+  "Distractor": {
+    "resistances": {
+      "acid": {
+        "percent": 85,
+        "decrease": 0
+      }
+    }
+  },
+  "Electric furnace": {
+    "resistances": {
+      "fire": {
+        "percent": 80,
+        "decrease": 0
+      }
+    }
+  },
+  "Escape pod assembler": {
+    "resistances": {
+      "fire": {
+        "percent": 70,
+        "decrease": 0
+      }
+    }
+  },
+  "Express loader": {
+    "resistances": {
+      "fire": {
+        "percent": 60,
+        "decrease": 0
+      }
+    }
+  },
+  "Express splitter": {
+    "resistances": {
+      "fire": {
+        "percent": 60,
+        "decrease": 0
+      }
+    }
+  },
+  "Express transport belt": {
+    "resistances": {
+      "fire": {
+        "percent": 50,
+        "decrease": 0
+      }
+    }
+  },
+  "Express underground belt": {
+    "resistances": {
+      "fire": {
+        "percent": 60,
+        "decrease": 0
+      },
+      "impact": {
+        "percent": 30,
+        "decrease": 0
+      }
+    }
+  },
+  "Fast inserter": {
+    "resistances": {
+      "fire": {
+        "percent": 90,
+        "decrease": 0
+      }
+    }
+  },
+  "Fast loader": {
+    "resistances": {
+      "fire": {
+        "percent": 60,
+        "decrease": 0
+      }
+    }
+  },
+  "Fast splitter": {
+    "resistances": {
+      "fire": {
+        "percent": 60,
+        "decrease": 0
+      }
+    }
+  },
+  "Fast transport belt": {
+    "resistances": {
+      "fire": {
+        "percent": 50,
+        "decrease": 0
+      }
+    }
+  },
+  "Fast underground belt": {
+    "resistances": {
+      "fire": {
+        "percent": 60,
+        "decrease": 0
+      },
+      "impact": {
+        "percent": 30,
+        "decrease": 0
+      }
+    }
+  },
+  "Filter inserter": {
+    "resistances": {
+      "fire": {
+        "percent": 90,
+        "decrease": 0
+      }
+    }
+  },
+  "Flamethrower turret": {
+    "resistances": {
+      "fire": {
+        "percent": 100,
+        "decrease": 0
+      }
+    }
+  },
+  "Fluid wagon": {
+    "resistances": {
+      "fire": {
+        "percent": 50,
+        "decrease": 15
+      },
+      "physical": {
+        "percent": 30,
+        "decrease": 15
+      },
+      "impact": {
+        "percent": 60,
+        "decrease": 50
+      },
+      "explosion": {
+        "percent": 30,
+        "decrease": 15
+      },
+      "acid": {
+        "percent": 20,
+        "decrease": 3
+      }
+    }
+  },
+  "Gate": {
+    "resistances": {
+      "physical": {
+        "percent": 20,
+        "decrease": 3
+      },
+      "impact": {
+        "percent": 60,
+        "decrease": 45
+      },
+      "explosion": {
+        "percent": 30,
+        "decrease": 10
+      },
+      "fire": {
+        "percent": 100,
+        "decrease": 0
+      },
+      "laser": {
+        "percent": 70,
+        "decrease": 0
+      }
+    }
+  },
+  "Heat exchanger": {
+    "resistances": {
+      "fire": {
+        "percent": 90,
+        "decrease": 0
+      },
+      "explosion": {
+        "percent": 30,
+        "decrease": 0
+      },
+      "impact": {
+        "percent": 30,
+        "decrease": 0
+      }
+    }
+  },
+  "Heat interface": {
+    "resistances": {
+      "fire": {
+        "percent": 100,
+        "decrease": 0
+      },
+      "impact": {
+        "percent": 100,
+        "decrease": 0
+      },
+      "physical": {
+        "percent": 100,
+        "decrease": 0
+      },
+      "explosion": {
+        "percent": 100,
+        "decrease": 0
+      }
+    }
+  },
+  "Heat pipe": {
+    "resistances": {
+      "fire": {
+        "percent": 90,
+        "decrease": 0
+      },
+      "explosion": {
+        "percent": 30,
+        "decrease": 0
+      },
+      "impact": {
+        "percent": 30,
+        "decrease": 0
+      }
+    }
+  },
+  "Infinity chest": {
+    "resistances": {
+      "fire": {
+        "percent": 100,
+        "decrease": 0
+      },
+      "impact": {
+        "percent": 100,
+        "decrease": 0
+      },
+      "physical": {
+        "percent": 100,
+        "decrease": 0
+      },
+      "explosion": {
+        "percent": 100,
+        "decrease": 0
+      }
+    }
+  },
+  "Infinity pipe": {
+    "resistances": {
+      "fire": {
+        "percent": 100,
+        "decrease": 0
+      },
+      "impact": {
+        "percent": 100,
+        "decrease": 0
+      },
+      "physical": {
+        "percent": 100,
+        "decrease": 0
+      },
+      "explosion": {
+        "percent": 100,
+        "decrease": 0
+      }
+    }
+  },
+  "Inserter": {
+    "resistances": {
+      "fire": {
+        "percent": 90,
+        "decrease": 0
+      }
+    }
+  },
+  "Iron chest": {
+    "resistances": {
+      "fire": {
+        "percent": 80,
+        "decrease": 0
+      },
+      "impact": {
+        "percent": 30,
+        "decrease": 0
+      }
+    }
+  },
+  "Loader": {
+    "resistances": {
+      "fire": {
+        "percent": 60,
+        "decrease": 0
+      }
+    }
+  },
+  "Locomotive": {
+    "resistances": {
+      "fire": {
+        "percent": 50,
+        "decrease": 15
+      },
+      "physical": {
+        "percent": 30,
+        "decrease": 15
+      },
+      "impact": {
+        "percent": 60,
+        "decrease": 50
+      },
+      "explosion": {
+        "percent": 30,
+        "decrease": 15
+      },
+      "acid": {
+        "percent": 20,
+        "decrease": 3
+      }
+    }
+  },
+  "Active provider chest": {
+    "resistances": {
+      "fire": {
+        "percent": 90,
+        "decrease": 0
+      },
+      "impact": {
+        "percent": 60,
+        "decrease": 0
+      }
+    }
+  },
+  "Buffer chest": {
+    "resistances": {
+      "fire": {
+        "percent": 90,
+        "decrease": 0
+      },
+      "impact": {
+        "percent": 60,
+        "decrease": 0
+      }
+    }
+  },
+  "Passive provider chest": {
+    "resistances": {
+      "fire": {
+        "percent": 90,
+        "decrease": 0
+      },
+      "impact": {
+        "percent": 60,
+        "decrease": 0
+      }
+    }
+  },
+  "Requester chest": {
+    "resistances": {
+      "fire": {
+        "percent": 90,
+        "decrease": 0
+      },
+      "impact": {
+        "percent": 60,
+        "decrease": 0
+      }
+    }
+  },
+  "Storage chest": {
+    "resistances": {
+      "fire": {
+        "percent": 90,
+        "decrease": 0
+      },
+      "impact": {
+        "percent": 60,
+        "decrease": 0
+      }
+    }
+  },
+  "Logistic robot": {
+    "resistances": {
+      "fire": {
+        "percent": 85,
+        "decrease": 0
+      }
+    }
+  },
+  "Long handed inserter": {
+    "resistances": {
+      "fire": {
+        "percent": 90,
+        "decrease": 0
+      }
+    }
+  },
+  "Medium biter": {
+    "resistances": {
+      "physical": {
+        "percent": 10,
+        "decrease": 4
+      },
+      "explosion": {
+        "percent": 10,
+        "decrease": 0
+      },
+      "acid": {
+        "percent": 100,
+        "decrease": 0
+      }
+    }
+  },
+  "Medium electric pole": {
+    "resistances": {
+      "fire": {
+        "percent": 100,
+        "decrease": 0
+      }
+    }
+  },
+  "Medium spitter": {
+    "resistances": {
+      "explosion": {
+        "percent": 10,
+        "decrease": 0
+      },
+      "acid": {
+        "percent": 100,
+        "decrease": 0
+      }
+    }
+  },
+  "Medium worm turret": {
+    "resistances": {
+      "physical": {
+        "percent": 0,
+        "decrease": 5
+      },
+      "explosion": {
+        "percent": 15,
+        "decrease": 5
+      },
+      "fire": {
+        "percent": 50,
+        "decrease": 2
+      },
+      "acid": {
+        "percent": 100,
+        "decrease": 0
+      }
+    }
+  },
+  "Offshore pump": {
+    "resistances": {
+      "fire": {
+        "percent": 70,
+        "decrease": 0
+      },
+      "impact": {
+        "percent": 30,
+        "decrease": 0
+      }
+    }
+  },
+  "Pipe": {
+    "resistances": {
+      "fire": {
+        "percent": 80,
+        "decrease": 0
+      },
+      "impact": {
+        "percent": 30,
+        "decrease": 0
+      }
+    }
+  },
+  "Pipe to ground": {
+    "resistances": {
+      "fire": {
+        "percent": 80,
+        "decrease": 0
+      },
+      "impact": {
+        "percent": 40,
+        "decrease": 0
+      }
+    }
+  },
+  "Pump": {
+    "resistances": {
+      "fire": {
+        "percent": 80,
+        "decrease": 0
+      },
+      "impact": {
+        "percent": 30,
+        "decrease": 0
+      }
+    }
+  },
+  "Radar": {
+    "resistances": {
+      "fire": {
+        "percent": 70,
+        "decrease": 0
+      },
+      "impact": {
+        "percent": 30,
+        "decrease": 0
+      }
+    }
+  },
+  "Red chest": {
+    "resistances": {
+      "fire": {
+        "percent": 90,
+        "decrease": 0
+      },
+      "impact": {
+        "percent": 60,
+        "decrease": 0
+      }
+    }
+  },
+  "Roboport": {
+    "resistances": {
+      "fire": {
+        "percent": 60,
+        "decrease": 0
+      },
+      "impact": {
+        "percent": 30,
+        "decrease": 0
+      }
+    }
+  },
+  "Rock big": {
+    "resistances": {
+      "fire": {
+        "percent": 100,
+        "decrease": 0
+      }
+    }
+  },
+  "Rock huge": {
+    "resistances": {
+      "fire": {
+        "percent": 100,
+        "decrease": 0
+      }
+    }
+  },
+  "Rocket silo": {
+    "resistances": {
+      "fire": {
+        "percent": 60,
+        "decrease": 0
+      },
+      "impact": {
+        "percent": 60,
+        "decrease": 0
+      }
+    }
+  },
+  "Sand rock big": {
+    "resistances": {
+      "fire": {
+        "percent": 100,
+        "decrease": 0
+      }
+    }
+  },
+  "Small biter": {
+    "resistances": {
+      "acid": {
+        "percent": 100,
+        "decrease": 0
+      }
+    }
+  },
+  "Small spitter": {
+    "resistances": {
+      "acid": {
+        "percent": 100,
+        "decrease": 0
+      }
+    }
+  },
+  "Small worm turret": {
+    "resistances": {
+      "acid": {
+        "percent": 100,
+        "decrease": 0
+      }
+    }
+  },
+  "Spitter spawner": {
+    "resistances": {
+      "physical": {
+        "percent": 15,
+        "decrease": 2
+      },
+      "explosion": {
+        "percent": 15,
+        "decrease": 5
+      },
+      "fire": {
+        "percent": 60,
+        "decrease": 3
+      }
+    }
+  },
+  "Splitter": {
+    "resistances": {
+      "fire": {
+        "percent": 60,
+        "decrease": 0
+      }
+    }
+  },
+  "Stack filter inserter": {
+    "resistances": {
+      "fire": {
+        "percent": 90,
+        "decrease": 0
+      }
+    }
+  },
+  "Stack inserter": {
+    "resistances": {
+      "fire": {
+        "percent": 90,
+        "decrease": 0
+      }
+    }
+  },
+  "Steam engine": {
+    "resistances": {
+      "fire": {
+        "percent": 70,
+        "decrease": 0
+      },
+      "impact": {
+        "percent": 30,
+        "decrease": 0
+      }
+    }
+  },
+  "Steam turbine": {
+    "resistances": {
+      "fire": {
+        "percent": 70,
+        "decrease": 0
+      }
+    }
+  },
+  "Steel chest": {
+    "resistances": {
+      "fire": {
+        "percent": 90,
+        "decrease": 0
+      },
+      "impact": {
+        "percent": 60,
+        "decrease": 0
+      }
+    }
+  },
+  "Steel furnace": {
+    "resistances": {
+      "fire": {
+        "percent": 100,
+        "decrease": 0
+      }
+    }
+  },
+  "Stone furnace": {
+    "resistances": {
+      "fire": {
+        "percent": 90,
+        "decrease": 0
+      },
+      "explosion": {
+        "percent": 30,
+        "decrease": 0
+      },
+      "impact": {
+        "percent": 30,
+        "decrease": 0
+      }
+    }
+  },
+  "Wall": {
+    "resistances": {
+      "physical": {
+        "percent": 20,
+        "decrease": 3
+      },
+      "impact": {
+        "percent": 60,
+        "decrease": 45
+      },
+      "explosion": {
+        "percent": 30,
+        "decrease": 10
+      },
+      "fire": {
+        "percent": 100,
+        "decrease": 0
+      },
+      "acid": {
+        "percent": 80,
+        "decrease": 0
+      },
+      "laser": {
+        "percent": 70,
+        "decrease": 0
+      }
+    }
+  },
+  "Straight rail": {
+    "resistances": {
+      "fire": {
+        "percent": 100,
+        "decrease": 0
+      },
+      "acid": {
+        "percent": 80,
+        "decrease": 0
+      }
+    }
+  },
+  "Substation": {
+    "resistances": {
+      "fire": {
+        "percent": 90,
+        "decrease": 0
+      }
+    }
+  },
+  "Tank": {
+    "resistances": {
+      "fire": {
+        "percent": 60,
+        "decrease": 15
+      },
+      "physical": {
+        "percent": 60,
+        "decrease": 15
+      },
+      "impact": {
+        "percent": 80,
+        "decrease": 50
+      },
+      "explosion": {
+        "percent": 70,
+        "decrease": 15
+      },
+      "acid": {
+        "percent": 50,
+        "decrease": 0
+      }
+    }
+  },
+  "Transport belt": {
+    "resistances": {
+      "fire": {
+        "percent": 90,
+        "decrease": 0
+      }
+    }
+  },
+  "Underground belt": {
+    "resistances": {
+      "fire": {
+        "percent": 60,
+        "decrease": 0
+      },
+      "impact": {
+        "percent": 30,
+        "decrease": 0
+      }
+    }
+  }
+}
