@@ -44,7 +44,13 @@
 	  "parameter-9",
 	  "copper-wire",
 	  "empty-module-slot",
-	  "science"
+	  "science",
+	  "bottomless-chest",
+	  "infinity-cargo-wagon",
+	  "one-way-valve",
+	  "overflow-valve",
+	  "proxy-container",
+	  "top-up-valve"
 	],
 	"technologies":[],
 	"fluids":[

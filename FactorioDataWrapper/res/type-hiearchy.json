@@ -276,4 +276,7 @@
   "space-connection" : null,
   "fusion-reactor" : "entity-with-owner",
   "capture-robot" : "flying-robot",
+  "infinity-cargo-wagon" : "cargo-wagon",
+  "proxy-container" : "entity-with-owner",
+  "valve" : "entity-with-owner",
 }
