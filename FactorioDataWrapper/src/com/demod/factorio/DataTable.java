@@ -7,6 +7,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 import org.json.JSONArray;
@@ -35,6 +37,7 @@ public class DataTable {
 		entityItemNameMapping.put("straight-rail", "rail");
 	}
 
+	private static final Pattern BONUS_TECHNOLOGY_NAME_REGEX = Pattern.compile("^(.*?)(?:-(\\d+))?$");
 	private final TypeHierarchy typeHierarchy;
 	private final LuaTable rawLua;
 
@@ -104,31 +107,45 @@ public class DataTable {
 			}
 		}
 
-		technologies.values().stream()
-				.filter(t -> (t.isUpgrade() || t.isMaxLevelInfinite()) && t.getName().endsWith("-1"))
-				.forEach(firstBonus -> {
-					String bonusMatch = firstBonus.getName().substring(0, firstBonus.getName().length() - 1);
-					String bonusName = bonusMatch.substring(0, bonusMatch.length() - 1);
+		technologies.values().stream().filter(t -> t.isUpgrade() || t.isMaxLevelInfinite()).forEach(firstBonus -> {
+			Matcher matcher = BONUS_TECHNOLOGY_NAME_REGEX.matcher(firstBonus.getName());
+			if (!matcher.matches())
+				throw new RuntimeException("Invalid bonus technology name: " + firstBonus.getName());
 
-					firstBonus.setFirstBonus(true);
-					List<TechPrototype> bonusGroup = technologies.values().stream()
-							.filter(bonus -> bonus.getName().startsWith(bonusMatch))
-							.peek(b -> b.setBonusLevel(-Integer.parseInt(b.getName().replace(bonusName, ""))))
-							.sorted((b1, b2) -> Integer.compare(b1.getBonusLevel(), b2.getBonusLevel()))
-							.collect(Collectors.toList());
+			String level = matcher.group(2);
+			// Only first level or no level techs are considered firstBonus
+			if (level != null && !level.equals("1"))
+				return;
 
-					for (TechPrototype bonus : bonusGroup) {
-						bonus.setBonus(true);
-						bonus.setBonusName(bonusName);
-						bonus.setBonusGroup(bonusGroup);
+			// Filters out technologies like efficiency-module
+			if (!firstBonus.getRecipeUnlocks().isEmpty())
+				return;
 
-						LuaValue countFormulaLua = bonus.lua().get("unit").get("count_formula");
-						if (!countFormulaLua.isnil()) {
-							bonus.setBonusFormula(Optional.of(countFormulaLua.tojstring()),
-									Optional.of(FactorioData.parseCountFormula(countFormulaLua.tojstring())));
-						}
-					}
-				});
+			String bonusName = matcher.group(1);
+
+			firstBonus.setFirstBonus(true);
+			List<TechPrototype> bonusGroup = technologies.values().stream()
+					.filter(bonus -> bonus.getName().startsWith(bonusName)).peek(b -> {
+						Matcher bonusMatcher = BONUS_TECHNOLOGY_NAME_REGEX.matcher(b.getName());
+						if (!bonusMatcher.matches())
+							throw new RuntimeException("Invalid bonus technology name: " + b.getName());
+						String bonusLevel = bonusMatcher.group(2);
+						b.setBonusLevel(Integer.parseInt(bonusLevel != null ? bonusLevel : "1"));
+					}).sorted((b1, b2) -> Integer.compare(b1.getBonusLevel(), b2.getBonusLevel()))
+					.collect(Collectors.toList());
+
+			for (TechPrototype bonus : bonusGroup) {
+				bonus.setBonus(true);
+				bonus.setBonusName(bonusName);
+				bonus.setBonusGroup(bonusGroup);
+
+				LuaValue countFormulaLua = bonus.lua().get("unit").get("count_formula");
+				if (!countFormulaLua.isnil()) {
+					bonus.setBonusFormula(Optional.of(countFormulaLua.tojstring()),
+							Optional.of(FactorioData.parseCountFormula(countFormulaLua.tojstring())));
+				}
+			}
+		});
 
 		this.entities.values().stream().filter(e -> !excludedRecipesAndItems.contains(e.getName())).forEach(e -> {
 			LuaValue categories = e.lua().get("crafting_categories");

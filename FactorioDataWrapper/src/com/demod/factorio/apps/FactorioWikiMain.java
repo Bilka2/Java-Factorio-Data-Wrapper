@@ -315,13 +315,16 @@ public class FactorioWikiMain {
 	}
 
 	/**
-	 * Same as {@link #wiki_fmtName(String, JSONObject)}, but adds a ", [number]"
-	 * when there is a number as the last part of the name. This adds the number to
-	 * the icon.
+	 * Adds a ", [number]" when this is a bonus technology with a number as the last
+	 * part of the name. This adds the number to the icon.
 	 */
-	public static String wiki_fmtNumberedWikiName(String wikiName) {
+	public static String wiki_fmtNumberedTechnologyWikiName(DataTable table, TechPrototype tech) {
+		String wikiName = table.getWikiTechnologyName(tech.isBonus() ? tech.getBonusName() : tech.getName());
 		String[] split = wikiName.split("\\s+");
 		Integer num = Ints.tryParse(split[split.length - 1]);
+		if (num == null && tech.isBonus()) {
+			num = tech.getBonusLevel();
+		}
 		if (num != null) {
 			wikiName += ", " + num;
 		}
@@ -585,9 +588,8 @@ public class FactorioWikiMain {
 	private static JSONObject wiki_Technologies(DataTable table) {
 		JSONObject json = createOrderedJSONObject();
 
-		Multimap<String, String> allowsMap = LinkedHashMultimap.create();
-		table.getTechnologies().values().forEach(tech -> tech.getPrerequisites()
-				.forEach(n -> allowsMap.put(n, tech.isBonus() ? tech.getBonusName() : tech.getName())));
+		Multimap<String, TechPrototype> allowsMap = LinkedHashMultimap.create();
+		table.getTechnologies().values().forEach(tech -> tech.getPrerequisites().forEach(n -> allowsMap.put(n, tech)));
 
 		table.getTechnologies().values().stream().sorted((t1, t2) -> t1.getName().compareTo(t2.getName()))
 				.filter(t -> !t.isBonus() || t.isFirstBonus()).forEach(tech -> {
@@ -639,17 +641,17 @@ public class FactorioWikiMain {
 
 					if (!tech.getPrerequisites().isEmpty()) {
 						itemJson.put("required-technologies",
-								tech.getPrerequisites().stream().sorted()
-										.map(n -> wiki_fmtNumberedWikiName(table.getWikiTechnologyName(n)))
+								tech.getPrerequisites().stream().sorted().map(
+										n -> wiki_fmtNumberedTechnologyWikiName(table, table.getTechnology(n).get()))
 										.collect(toJsonArray()));
 					}
 
 					if (!tech.isFirstBonus()) {
-						Collection<String> allows = allowsMap.get(tech.getName());
+						Collection<TechPrototype> allows = allowsMap.get(tech.getName());
 						if (!allows.isEmpty()) {
 							itemJson.put("allows",
-									allows.stream().sorted()
-											.map(n -> wiki_fmtNumberedWikiName(table.getWikiTechnologyName(n)))
+									allows.stream().sorted((t1, t2) -> t1.getName().compareTo(t2.getName()))
+											.map(t -> wiki_fmtNumberedTechnologyWikiName(table, t))
 											.collect(toJsonArray()));
 						}
 					} else {
