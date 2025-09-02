@@ -1100,11 +1100,11 @@
         1
       ],
       [
-        "Electromagnetic science pack",
+        "Agricultural science pack",
         1
       ],
       [
-        "Agricultural science pack",
+        "Electromagnetic science pack",
         1
       ],
       [
@@ -2207,7 +2207,7 @@
         1
       ]
     ],
-    "cost-multiplier": 0,
+    "cost-multiplier": 500,
     "required-technologies": ["Tree seeding"],
     "effects": [
       "Fish breeding",
@@ -2443,11 +2443,11 @@
         1
       ],
       [
-        "Electromagnetic science pack",
+        "Agricultural science pack",
         1
       ],
       [
-        "Agricultural science pack",
+        "Electromagnetic science pack",
         1
       ],
       [
@@ -2455,7 +2455,7 @@
         1
       ]
     ],
-    "cost-multiplier": 0,
+    "cost-multiplier": 2000,
     "required-technologies": ["Cryogenic science pack"],
     "effects": ["Foundation"]
   },
@@ -2525,11 +2525,11 @@
         1
       ],
       [
-        "Electromagnetic science pack",
+        "Agricultural science pack",
         1
       ],
       [
-        "Agricultural science pack",
+        "Electromagnetic science pack",
         1
       ],
       [
@@ -2585,11 +2585,11 @@
         1
       ],
       [
-        "Electromagnetic science pack",
+        "Agricultural science pack",
         1
       ],
       [
-        "Agricultural science pack",
+        "Electromagnetic science pack",
         1
       ],
       [
@@ -3025,11 +3025,11 @@
         1
       ],
       [
-        "Electromagnetic science pack",
+        "Agricultural science pack",
         1
       ],
       [
-        "Agricultural science pack",
+        "Electromagnetic science pack",
         1
       ],
       [
@@ -3079,7 +3079,7 @@
     "internal-name": "lithium-processing",
     "trigger-type": "mine-entity",
     "trigger-object": [
-      "Lithium iceberg big",
+      "Big lithium ice formation",
       1
     ],
     "required-technologies": ["Planet discovery Aquilo"],
@@ -4017,11 +4017,11 @@
         1
       ],
       [
-        "Electromagnetic science pack",
+        "Agricultural science pack",
         1
       ],
       [
-        "Agricultural science pack",
+        "Electromagnetic science pack",
         1
       ]
     ],
@@ -4515,11 +4515,11 @@
         1
       ],
       [
-        "Electromagnetic science pack",
+        "Agricultural science pack",
         1
       ],
       [
-        "Agricultural science pack",
+        "Electromagnetic science pack",
         1
       ],
       [
@@ -4527,7 +4527,7 @@
         1
       ]
     ],
-    "cost-multiplier": 0,
+    "cost-multiplier": 2000,
     "required-technologies": [
       "Biter egg handling",
       "Fusion reactor"
@@ -4662,11 +4662,11 @@
         1
       ],
       [
-        "Electromagnetic science pack",
+        "Agricultural science pack",
         1
       ],
       [
-        "Agricultural science pack",
+        "Electromagnetic science pack",
         1
       ],
       [
@@ -4786,11 +4786,11 @@
         1
       ],
       [
-        "Electromagnetic science pack",
+        "Agricultural science pack",
         1
       ],
       [
-        "Agricultural science pack",
+        "Electromagnetic science pack",
         1
       ],
       [
@@ -4936,7 +4936,7 @@
     "internal-name": "recycling",
     "trigger-type": "mine-entity",
     "trigger-object": [
-      "Fulgoran ruin vault",
+      "Fulgoran vault ruin",
       1
     ],
     "required-technologies": ["Planet discovery Fulgora"],
@@ -5026,11 +5026,11 @@
         1
       ],
       [
-        "Electromagnetic science pack",
+        "Agricultural science pack",
         1
       ],
       [
-        "Agricultural science pack",
+        "Electromagnetic science pack",
         1
       ],
       [

@@ -16,11 +16,12 @@ public class RecipePrototype extends DataPrototype {
 	private final double energyRequired;
 	private final boolean handCraftable;
 	private final boolean recycling;
+	private final boolean hidden;
 
 	public RecipePrototype(LuaTable lua, String name, String type) {
 		super(lua, name, type);
 
-		boolean hidden = lua.get("hidden").optboolean(false);
+		hidden = lua.get("hidden").optboolean(false);
 
 		LuaValue ingredientsLua = lua.get("ingredients").opttable(new LuaTable());
 		if (!hidden) {
@@ -49,7 +50,7 @@ public class RecipePrototype extends DataPrototype {
 		category = lua.get("category").optjstring("crafting");
 		// FIXME get these from the character prototype
 		handCraftable = category.equals("crafting") || category.equals("electronics") || category.equals("pressing")
-				|| category.equals("recycling-or-hand-crafing") || category.equals("organic-or-hand-crafing")
+				|| category.equals("recycling-or-hand-crafing") || category.equals("organic-or-hand-crafting")
 				|| category.equals("organic-or-assembling");
 		recycling = category.equals("recycling");
 	}
@@ -72,6 +73,10 @@ public class RecipePrototype extends DataPrototype {
 
 	public boolean isHandCraftable() {
 		return handCraftable;
+	}
+
+	public boolean isHidden() {
+		return hidden;
 	}
 
 	public boolean isRecycling() {

@@ -94,8 +94,8 @@ public class FactorioWikiMain {
 		wiki_ScienceOrdering.put("utility-science-pack", 6);
 		wiki_ScienceOrdering.put("space-science-pack", 7);
 		wiki_ScienceOrdering.put("metallurgic-science-pack", 8);
-		wiki_ScienceOrdering.put("electromagnetic-science-pack", 9);
-		wiki_ScienceOrdering.put("agricultural-science-pack", 10);
+		wiki_ScienceOrdering.put("agricultural-science-pack", 9);
+		wiki_ScienceOrdering.put("electromagnetic-science-pack", 10);
 		wiki_ScienceOrdering.put("cryogenic-science-pack", 11);
 		wiki_ScienceOrdering.put("promethium-science-pack", 12);
 	}
@@ -512,7 +512,7 @@ public class FactorioWikiMain {
 		Map<String, RecipePrototype> normalRecipes = table.getRecipes();
 		TotalRawCalculator normalTotalRawCalculator = new TotalRawCalculator(normalRecipes);
 
-		normalRecipes.values().stream().filter(r -> !r.isRecycling())
+		normalRecipes.values().stream().filter(r -> !r.isRecycling() && !r.isHidden())
 				.sorted((r1, r2) -> r1.getName().compareTo(r2.getName())).forEach(recipe -> {
 					JSONObject item = createOrderedJSONObject();
 					json.put(table.getWikiItemName(recipe.getName()), item);

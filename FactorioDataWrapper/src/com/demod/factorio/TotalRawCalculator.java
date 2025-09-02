@@ -30,7 +30,9 @@ public class TotalRawCalculator {
 					.filter(r -> r.getOutputs().keySet().stream().anyMatch(i -> {
 						return i.equals(input);
 					})).findFirst();
-			if (findRecipe.isPresent()) {
+			// XXX hardcoding ingredients to not break down here to match Factorio behavior
+			if (findRecipe.isPresent() && !input.equals("jellynut-seed") && !input.equals("yumako-seed")
+					&& !input.equals("spoilage")) {
 				RecipePrototype inputRecipe = findRecipe.get();
 				Map<String, Double> inputTotalRaw = compute(inputRecipe);
 				Double inputRunYield = inputRecipe.getOutputs().get(input);
